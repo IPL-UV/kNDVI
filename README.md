@@ -33,7 +33,6 @@ Gustau Camps-Valls, Manuel Campos-Taberner, Álvaro Moreno-Martı́nez, Sophia W
   journal = {Science Advances}
 }
 ```
-<br><br>
 &nbsp;&nbsp;&nbsp;<a href="https://advances.sciencemag.org/content/7/9/eabc7447"> Science Advances (open access, no hyperlinks) </a> <br>
 &nbsp;&nbsp;&nbsp;<a href="https://zenodo.org/record/4574349"> Preprint paper+supplementary material in one file (with hyperlinks) </a> <br>
 
