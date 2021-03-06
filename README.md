@@ -7,7 +7,7 @@ Empirical vegetation indices derived from spectral reflectance data are widely u
 
 Here you find some basic implementations in several computer languages: Python, JavaScript for GEE, R, Julia, MATLAB, and IDL. Also, we give Google Earth Engine (GEE) examples in https://code.earthengine.google.com/?accept_repo=users/belmanip/kNDVI
 
-Being a kernel method, the kNDVI also has a kernel parameter to be selected. We use the RBF kernel and the corresponding lengthscale parameter sigma is typically fixed to the average distance between NIR and red, either in the same pixel as simply sigma=0.5(NIR+red), or computing the average distance over a region of interest or a time series. We show a particular example in the GEE code on how to do this.
+Being a kernel method, the kNDVI also has a kernel parameter to be selected. We use the RBF kernel and the corresponding lengthscale parameter sigma is typically fixed to the average distance between NIR and red, either in the same pixel as simply sigma=0.5(NIR+red), or computing the average distance over a region of interest or a time series. We show a particular example in the GEE code on how to do this. 
 
 # Cite our work
 
@@ -15,6 +15,8 @@ If you find this useful, consider citing our work:
 
 <b>A Unified Vegetation Index for Quantifying the Terrestrial Biosphere</b>
 Gustau Camps-Valls, Manuel Campos-Taberner, Álvaro Moreno-Martı́nez, Sophia Walther, Grégory Duveiller, Alessandro Cescatti, Miguel Mahecha, Jordi Muñoz-Marı́, Francisco Javier García-Haro, Luis Guanter, John Gamon, Martin Jung, Markus Reichstein, Steven W. Running. Science Advances, 26 Feb 2021: Vol. 7, no. 9, eabc7447. DOI: 10.1126/sciadv.abc7447
+<a href="https://advances.sciencemag.org/content/7/9/eabc7447">  <a href="https://zenodo.org/record/4574349">
+
 ```
 @article {Camps-Vallseabc7447,
   author = {Camps-Valls, Gustau and Campos-Taberner, Manuel and Moreno-Mart{\'\i}nez, {\'A}lvaro and
