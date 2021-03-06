@@ -14,8 +14,9 @@ Being a kernel method, the kNDVI also has a kernel parameter to be selected. We 
 If you find this useful, consider citing our work:
 
 <b>A Unified Vegetation Index for Quantifying the Terrestrial Biosphere</b>
-Gustau Camps-Valls, Manuel Campos-Taberner, Álvaro Moreno-Martı́nez, Sophia Walther, Grégory Duveiller, Alessandro Cescatti, Miguel Mahecha, Jordi Muñoz-Marı́, Francisco Javier García-Haro, Luis Guanter, John Gamon, Martin Jung, Markus Reichstein, Steven W. Running. Science Advances, 26 Feb 2021: Vol. 7, no. 9, eabc7447. 
-<a href="https://advances.sciencemag.org/content/7/9/eabc7447">DOI: 10.1126/sciadv.abc7447</a>  <a href="https://zenodo.org/record/4574349">Paper+Supp.Mat. </a>
+Gustau Camps-Valls, Manuel Campos-Taberner, Álvaro Moreno-Martı́nez, Sophia Walther, Grégory Duveiller, Alessandro Cescatti, Miguel Mahecha, Jordi Muñoz-Marı́, Francisco Javier García-Haro, Luis Guanter, John Gamon, Martin Jung, Markus Reichstein, Steven W. Running. Science Advances, 26 Feb 2021: Vol. 7, no. 9, eabc7447. DOI: 10.1126/sciadv.abc7447
+
+<a href="https://advances.sciencemag.org/content/7/9/eabc7447">Paper</a> | <a href="https://zenodo.org/record/4574349">Preprint+Supp.Mat. </a>
 
 ```
 @article {Camps-Vallseabc7447,
