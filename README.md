@@ -3,7 +3,7 @@
 
 Empirical vegetation indices derived from spectral reflectance data are widely used in remote sensing of the biosphere, as they represent robust proxies for canopy structure, leaf pigment content and, subsequently, plant photosynthetic potential. Here we generalize the broad family of commonly used vegetation indices by exploiting all  higher-order relations between the spectral channels involved. This results in a higher sensitivity to vegetation biophysical and physiological parameters. While many kernel vegetation indices are possible, we focus here on the the nonlinear generalization of the Normalized Difference Vegetation Index (NDVI). Check the paper and (especially) the supplementary material for more details, parameter prescriptions, other examples of application and code snippets and demos. 
 
-$k(n,r)=exp(-(n-r)^2/(2\sigma^2)$
+$$k(n,r)=exp(-(n-r)^2/(2\sigma^2)$$
 
 # On the kNDVI code
 
