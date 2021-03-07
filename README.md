@@ -23,43 +23,20 @@ Kernel methods require the definition of a kernel function and fixing the corres
 /* 
 1- Pixel-wise sigma. Estimate sigma independently for each pixel as sigma=0.5*(NIR+red).
 2- Region/biome specific. Compute the average distance over a region of interest. 
-3- 
+3- Time series. Estimate the lengthscale of the temporal distances.
 */
 We show specific examples in the GEE code (demo2) on how to do this. 
 
-
-A reasonable choice is taking the average value sigma = 0.5(NIR+red). See S1 and S2 for mathematical and 
-ecophysiological justifications, which leads to a simplified operational index version expressed as 
-
-kNDVI = tanh(NDVI^2)
-
-The average of NIR and red can be computed in different ways, depending on the application:
-
-1) Pixel-based. You just average NIR and red for the pixel. This choice can be interpreted as 
-         a rough estimation of the pixel’s albedo (see supp. mat. S1.4 for more info)
-2) Time series analysis. Remember that in kernel methods, the sigma value should reflect 
-         the 'average distance' between the objects you compare (here NIR and red reflectances), so
-         when dealing with time series, it is advised to average the mean distance between NIR and red
-         over all pixels in the time series. 
-3) Regions/biomes. When applying the index to a particular biome or region of interest, the scale sigma of 
-         NIR and red relations should be estimated from that particular region by taking for example the 
-         average distance between NIR and red of all pixels in the area.
-
 # Some more (important) notes
+/*
+1- Working with radiances or reflectances changes the value of sigma, so we strongly recommend to either (a) normalize the data before fixing the sigma value (e.g. sigma=0.15), or (b) estimate the sigma value directly from data by the average distance criterion (see discussion above).
 
-* Working with radiances or reflectances changes the value of sigma, so we strongly recommend to either 
-a) normalize the data before fixing the sigma value of your choice
-b) estimate the sigma value directly from data by the average distance criterion (see discussion above)
+2- In remote sensing of the vegetation, we are very often dealing with noise, clouds and water bodies that hamper the direct application of any vegetation index. Since kNDVI depends on sigma, one should carefully either remove those cases from the calculation of the mean heuristic, or alternatively replace the mean with the median, which worked fine in our case studies.
 
-* In remote sensing of the vegetation, we are very often dealing with noise, clouds and water bodies that hamper the 
-direct application of any vegetation index. And since kNDVI operation depends on sigma, one should carefully 
-either remove those cases from the calculation of the mean heuristic, or alternatively replace the mean with the median, 
-which worked fine in our case studies.
+3- Note that the value of the kNDVI is bounded to [0,1] by construction, thus unlike NDVI no negative values are possible and thus kNDVI=0 just means /no vegetation./
+*/
 
-
-
-
-# Cite our work
+# How to cite our work
 
 If you find this useful, consider citing our work:
 
