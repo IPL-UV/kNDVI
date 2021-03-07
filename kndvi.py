@@ -3,7 +3,8 @@
 # red: red value
 
 import numpy as np
-sigma = 1.0
+# Fix or estimate a reasonable sigma value
+sigma = 0.15
 knr = np.exp(-(nir-red)**2/(2*sigma**2))
 kndvi = (1-knr) / (1+knr)
 
