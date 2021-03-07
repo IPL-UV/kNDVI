@@ -17,11 +17,9 @@ Also, we give Google Earth Engine (GEE) examples in https://code.earthengine.goo
 
 Kernel methods require the definition of a kernel function and fixing the corresponding parameters. Many kernel functions are possible: the linear, polynomial or radial basis function (RBF) kernel being the most popular <a href="https://arxiv.org/pdf/math/0701907.pdf">[Hofmann et al 2007]</a>, <a href="https://arxiv.org/pdf/2007.14706.pdf">[Johnson et al 2020]</a>. In this work, we explored all three (see S1-S3 in the paper), but decided to stick to the RBF kernel because it captures all higher order moments of similarity between the implied objects (e.g. NIR and red reflectances in the NDVI). The RBF kernel, k(a,b) = exp(-(a-b)^2/(2\sigma^2)), has a  lengthscale parameter \sigma that needs to be tuned for the particular problem. 
 
-The \sigma parameter 
+The \sigma parameter is typically learned by cross-validation in supervised settings, but this is not possible in unsupervised cases like in kNDVI. Therefore, we suggest to estimate a reasonable value from the data itself. A common prescription in the kernel methods literature is to fix the sigma value to the average distance between all involved objects in the dataset, i.e. NIR and red values of all involved pixels in your problem. In the case of kNDVI one has several possibilities:
 
-is typically learned by cross-validation in supervised settings, or fixed to the average distance between all points in the dataset. 
-
-NIR and red, either in the same pixel as simply sigma=0.5(NIR+red), or computing the average distance over a region of interest or a time series. We show a particular example in the GEE code on how to do this. 
+1- IR and red, either in the same pixel as simply sigma=0.5(NIR+red), or computing the average distance over a region of interest or a time series. We show a particular example in the GEE code on how to do this. 
 
 The kNDVI is defined as:
 
