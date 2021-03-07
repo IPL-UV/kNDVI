@@ -40,8 +40,8 @@ We show specific examples in the GEE code (demo2) on how to do this.
 
 If you find this useful, consider citing our work:
 
-<b>A Unified Vegetation Index for Quantifying the Terrestrial Biosphere</b>
-Gustau Camps-Valls, Manuel Campos-Taberner, Álvaro Moreno-Martı́nez, Sophia Walther, Grégory Duveiller, Alessandro Cescatti, Miguel Mahecha, Jordi Muñoz-Marı́, Francisco Javier García-Haro, Luis Guanter, John Gamon, Martin Jung, Markus Reichstein, Steven W. Running. Science Advances, 26 Feb 2021: Vol. 7, no. 9, eabc7447. DOI: 10.1126/sciadv.abc7447
+><b>A Unified Vegetation Index for Quantifying the Terrestrial Biosphere</b>
+>Gustau Camps-Valls, Manuel Campos-Taberner, Álvaro Moreno-Martı́nez, Sophia Walther, Grégory Duveiller, Alessandro Cescatti, Miguel Mahecha, Jordi Muñoz-Marı́, Francisco >Javier García-Haro, Luis Guanter, John Gamon, Martin Jung, Markus Reichstein, Steven W. Running. Science Advances, 26 Feb 2021: Vol. 7, no. 9, eabc7447. DOI: >10.1126/sciadv.abc7447
 
 <a href="https://advances.sciencemag.org/content/7/9/eabc7447">Paper</a> | <a href="https://zenodo.org/record/4574349">Preprint+Supp.Mat. </a>
 
