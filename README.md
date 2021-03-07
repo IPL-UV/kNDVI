@@ -24,17 +24,17 @@ Kernel methods require the definition of a kernel function and fixing the corres
 <li> Pixel-wise sigma. Estimate sigma independently for each pixel as sigma=0.5*(NIR+red).
 <li> Region/biome specific. Compute the average distance over a region of interest. 
 <li> Time series. Estimate the lengthscale of the temporal distances.
-<ol>
+</ol>
 We show specific examples in the GEE code (demo2) on how to do this. 
 
 # Some more (important) notes
-/*:
-1- Working with radiances or reflectances changes the value of sigma, so we strongly recommend to either (a) normalize the data before fixing the sigma value (e.g. sigma=0.15), or (b) estimate the sigma value directly from data by the average distance criterion (see discussion above).
+<ol> 
+<li>Working with radiances or reflectances changes the value of sigma, so we strongly recommend to either (a) normalize the data before fixing the sigma value (e.g. sigma=0.15), or (b) estimate the sigma value directly from data by the average distance criterion (see discussion above).
 
-2- In remote sensing of the vegetation, we are very often dealing with noise, clouds and water bodies that hamper the direct application of any vegetation index. Since kNDVI depends on sigma, one should carefully either remove those cases from the calculation of the mean heuristic, or alternatively replace the mean with the median, which worked fine in our case studies.
+<li>In remote sensing of the vegetation, we are very often dealing with noise, clouds and water bodies that hamper the direct application of any vegetation index. Since kNDVI depends on sigma, one should carefully either remove those cases from the calculation of the mean heuristic, or alternatively replace the mean with the median, which worked fine in our case studies.
 
-3- Note that the value of the kNDVI is bounded to [0,1] by construction, thus unlike NDVI no negative values are possible and thus kNDVI=0 just means /no vegetation./
-*/
+<li> Note that the value of the kNDVI is bounded to [0,1] by construction, thus unlike NDVI no negative values are possible and thus kNDVI=0 just means /no vegetation./
+</ol>
 
 # How to cite our work
 
