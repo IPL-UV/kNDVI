@@ -17,14 +17,14 @@ Also, we give Google Earth Engine (GEE) examples in https://code.earthengine.goo
 
 Kernel methods require the definition of a kernel function and fixing the corresponding parameters. Many kernel functions are possible: the linear, polynomial or radial basis function (RBF) kernel being the most popular <a href="https://arxiv.org/pdf/math/0701907.pdf">[Hofmann et al 2007]</a>, <a href="https://arxiv.org/pdf/2007.14706.pdf">[Johnson et al 2020]</a>. The RBF kernel, k(a,b) = exp(-(a-b)^2/(2\sigma^2)), has a lengthscale parameter \sigma which controls the notion of similarty between a and b. For the kNDVI, the involved kernel is k(NIR,red) = exp(-(NIR-red)^2/(2\sigma^2)), and thus the lengthscale parameter sigma controls the sensitivity to densely/sparsely vegetated pixel/region.
 
-* In this work, we explored all three (see S1-S3 in the paper), but decided to stick to the RBF kernel because 1) it largely simplifies the index, kNDVI=tanh(((NIR-red)/(s*sigma))^2), 2) it captures all higher order moments of similarity between the implied objects (e.g. NIR and red reflectances in the NDVI), and 3) good results were obtained in all applications. 
+* In this work, we explored all three (see supp.material S1-S2 of the paper), but decided to stick to the RBF kernel because (i) it largely simplifies the index, kNDVI=tanh(((NIR-red)/(s*sigma))^2), (ii) it captures all higher order moments of similarity between NIR and red reflectances, and (iii) good results were obtained in all applications. 
 
 * The sigma parameter is typically learned by cross-validation in supervised settings, but this is not possible in unsupervised cases like in kNDVI. Therefore, we suggest to estimate a reasonable value from the data itself. A common prescription in the kernel methods literature is to fix the sigma value to the average distance between all involved objects in the dataset, i.e. NIR and red values of all involved pixels in your problem. Several options exist:
-
+/* 
 1- Pixel-wise sigma. Estimate sigma independently for each pixel as sigma=0.5*(NIR+red).
 2- Region/biome specific. Compute the average distance over a region of interest. 
 3- 
-
+*/
 We show specific examples in the GEE code (demo2) on how to do this. 
 
 
