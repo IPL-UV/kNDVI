@@ -20,7 +20,7 @@ Kernel methods require the definition of a kernel function and fixing the corres
 * In this work, we explored all three (see supp.material S1-S2 of the paper), but decided to stick to the RBF kernel because (i) it largely simplifies the index, kNDVI=tanh(((NIR-red)/(s*sigma))^2), (ii) it captures all higher order moments of similarity between NIR and red reflectances, and (iii) good results were obtained in all applications. 
 
 * The sigma parameter is typically learned by cross-validation in supervised settings, but this is not possible in unsupervised cases like in kNDVI. Therefore, we suggest to estimate a reasonable value from the data itself. A common prescription in the kernel methods literature is to fix the sigma value to the average distance between all involved objects in the dataset, i.e. NIR and red values of all involved pixels in your problem. Several options exist:
-/* 
+/*: 
 1- Pixel-wise sigma. Estimate sigma independently for each pixel as sigma=0.5*(NIR+red).
 2- Region/biome specific. Compute the average distance over a region of interest. 
 3- Time series. Estimate the lengthscale of the temporal distances.
@@ -28,7 +28,7 @@ Kernel methods require the definition of a kernel function and fixing the corres
 We show specific examples in the GEE code (demo2) on how to do this. 
 
 # Some more (important) notes
-/*
+/*:
 1- Working with radiances or reflectances changes the value of sigma, so we strongly recommend to either (a) normalize the data before fixing the sigma value (e.g. sigma=0.15), or (b) estimate the sigma value directly from data by the average distance criterion (see discussion above).
 
 2- In remote sensing of the vegetation, we are very often dealing with noise, clouds and water bodies that hamper the direct application of any vegetation index. Since kNDVI depends on sigma, one should carefully either remove those cases from the calculation of the mean heuristic, or alternatively replace the mean with the median, which worked fine in our case studies.
