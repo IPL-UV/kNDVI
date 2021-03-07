@@ -20,11 +20,11 @@ Kernel methods require the definition of a kernel function and fixing the corres
 * In this work, we explored all three (see supp.material S1-S2 of the paper), but decided to stick to the RBF kernel because (i) it largely simplifies the index, kNDVI=tanh(((NIR-red)/(s*sigma))^2), (ii) it captures all higher order moments of similarity between NIR and red reflectances, and (iii) good results were obtained in all applications. 
 
 * The sigma parameter is typically learned by cross-validation in supervised settings, but this is not possible in unsupervised cases like in kNDVI. Therefore, we suggest to estimate a reasonable value from the data itself. A common prescription in the kernel methods literature is to fix the sigma value to the average distance between all involved objects in the dataset, i.e. NIR and red values of all involved pixels in your problem. Several options exist:
-/*: 
-1- Pixel-wise sigma. Estimate sigma independently for each pixel as sigma=0.5*(NIR+red).
-2- Region/biome specific. Compute the average distance over a region of interest. 
-3- Time series. Estimate the lengthscale of the temporal distances.
-*/
+<ol> 
+<li> Pixel-wise sigma. Estimate sigma independently for each pixel as sigma=0.5*(NIR+red).
+<li> Region/biome specific. Compute the average distance over a region of interest. 
+<li> Time series. Estimate the lengthscale of the temporal distances.
+<ol>
 We show specific examples in the GEE code (demo2) on how to do this. 
 
 # Some more (important) notes
