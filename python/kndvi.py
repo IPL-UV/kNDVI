@@ -6,17 +6,34 @@ import numpy as np
 from scipy.spatial.distance import pdist
 
 # Fix or estimate a reasonable sigma value
-sigma = 0.15
 
 
-def median_dist_sigma(X: np.ndarray) -> float:
+
+def median_dist_sigma(X: np.ndarray, subsample: int=None, seed: int=123) -> float:
     """standard median distance estimation for sigma
     Args: 
-        X (np.ndarray): input data
+        X (np.ndarray): input data, shape=(n_samples, n_features)
+        subsample (int): subsample of the data, optional
+            recommended value of 1_000 for very large datasets
+        seed (int): for reproducibility on the random subsample
     Returns:
         sigma (float): sigma value
     """
-    sigma = np.median(pdist(X))
+
+    # ensure 1D for pdist function
+    if X.ndim == 1:
+        X = np.atleast_2d(X).T
+    
+    # only subsample if asked for or less than number of samples
+    if subsample is not None and subsample < X.shape[0]:
+        # random seed for reproducibility
+        rng = np.random.RandomState(seed)
+
+        # permute samples and take a subset
+        X = rng.permutation(X)[:subsample]
+
+    # get nonzero elements
+    sigma = np.median(pdist(X, "euclidean"))
 
     return sigma
 
@@ -28,7 +45,6 @@ def pixel_wise_sigma(nir: np.ndarray, red: np.ndarray) -> float:
     Args:
         nir (np.ndarray): near infrared band, shape=(n_samples)
         red (np.ndarray): red band, shape=(n_samples)
-        sigma (float): length scale for the kernel method
     Returns:
         sigma (float): sigma value
         """
@@ -37,7 +53,7 @@ def pixel_wise_sigma(nir: np.ndarray, red: np.ndarray) -> float:
     return sigma
 
 
-def calculate_kndvi(nir: np.ndarray, red: np.ndarray, sigma: float) -> np.ndarray:
+def calculate_kndvi(nir: np.ndarray, red: np.ndarray, sigma: float=0.15) -> np.ndarray:
     """calculate kernel NDVI method
     
     Args:
@@ -62,9 +78,11 @@ def calculate_kndvi(nir: np.ndarray, red: np.ndarray, sigma: float) -> np.ndarra
 def main():
 
     # estimate sigma
-    n_samples = 100
+    n_samples = 10
     nir = np.random.randn(n_samples)
     red = 0.1 * np.random.randn(n_samples)
+
+    sigma = pixel_wise_sigma(nir, red)
 
     # estimate kernel ndvi
     k_indice = calculate_kndvi(nir, red, sigma)
