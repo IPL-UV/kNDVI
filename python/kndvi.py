@@ -5,9 +5,6 @@
 import numpy as np
 from scipy.spatial.distance import pdist
 
-# Fix or estimate a reasonable sigma value
-
-
 
 def median_dist_sigma(X: np.ndarray, subsample: int=None, seed: int=123) -> float:
     """standard median distance estimation for sigma
