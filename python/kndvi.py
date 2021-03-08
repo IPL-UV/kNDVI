@@ -26,8 +26,8 @@ def pixel_wise_sigma(nir: np.ndarray, red: np.ndarray) -> float:
     Estimate sigma independently for each pixel as sigma=0.5*(NIR+red).
     
     Args:
-        nir (np.ndarray): near infrared band
-        red (np.ndarray): red band
+        nir (np.ndarray): near infrared band, shape=(n_samples)
+        red (np.ndarray): red band, shape=(n_samples)
         sigma (float): length scale for the kernel method
     Returns:
         sigma (float): sigma value
@@ -37,15 +37,15 @@ def pixel_wise_sigma(nir: np.ndarray, red: np.ndarray) -> float:
     return sigma
 
 
-def calculate_kndvi(nir: np.ndarray, red: np.ndarray, sigma: float) -> float:
+def calculate_kndvi(nir: np.ndarray, red: np.ndarray, sigma: float) -> np.ndarray:
     """calculate kernel NDVI method
     
     Args:
-        nir (np.ndarray): near infrared band
-        red (np.ndarray): red band
+        nir (np.ndarray): near infrared band, shape=(n_samples)
+        red (np.ndarray): red band, shape=(n_samples)
         sigma (float): length scale for the kernel method
     Returns:
-        kndvi (np.ndarray): kernel ndvi
+        kndvi (np.ndarray): kernel ndvi, shape=(n_samples)
     """
     # calculate knr
     knr = np.exp(-((nir - red) ** 2) / (2 * sigma ** 2))
