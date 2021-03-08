@@ -32,7 +32,7 @@ def median_dist_sigma(X: np.ndarray, subsample: int=None, seed: int=123) -> floa
         # permute samples and take a subset
         X = rng.permutation(X)[:subsample]
 
-    # get nonzero elements
+    # get the median distance
     sigma = np.median(pdist(X, "euclidean"))
 
     return sigma
