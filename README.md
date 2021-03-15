@@ -11,7 +11,7 @@ Check the paper and (especially) the supplementary material for more details, pa
 
 Here you find some basic implementations in several computer languages: Python, JavaScript for GEE, R, Julia, MATLAB, and IDL. 
 
-Also, we give Google Earth Engine (GEE) examples in https://code.earthengine.google.com/?accept_repo=users/belmanip/kNDVI
+Also, we give Google Earth Engine (GEE) examples in https://code.earthengine.google.com/?accept_repo=users/ispguv/kNDVI
 
 # On the (importance) of the sigma parameter
 
