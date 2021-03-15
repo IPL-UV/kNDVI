@@ -19,13 +19,7 @@ Kernel methods require the definition of a kernel function and fixing the corres
 
 * In this work, we explored all three kernel functions (see supp.material S1-S2 of the paper), but decided to stick to the RBF kernel because (i) it largely simplifies the index, kndvi = tanh((NIR-red)^2/(2\sigma)^2), (ii) it captures all higher order moments of similarity between NIR and red reflectances, and (iii) good results are obtained in all applications. 
 
-* The sigma parameter is typically learned by cross-validation in supervised kernel machines, but this is not possible in unsupervised cases like in kNDVI. Therefore, we suggest to estimate a reasonable value of sigma from the data itself. A common prescription in the kernel methods literature is to fix the sigma value to the average distance between all involved objects in the dataset, i.e. NIR and red values of all involved pixels in your problem. Several options exist:
-<ol> 
-<li> Pixel-wise sigma. Estimate sigma independently for each pixel as sigma=0.5*(NIR+red).
-<li> Region/biome specific. Compute the average distance over a region of interest. 
-<li> Time series. Estimate the lengthscale of the temporal distances.
-</ol>
-We show specific examples for each approach in the <a href="https://code.earthengine.google.com/?accept_repo=users/ispguv/kNDVI">GEE demos here</a>
+* The sigma parameter is typically learned by cross-validation in supervised kernel machines, but this is not possible in unsupervised cases like in kNDVI. Therefore, we suggest to estimate a reasonable value of sigma from the data itself. A common prescription in the kernel methods literature is to fix the sigma value to the average distance between all involved objects in the dataset, i.e. NIR and red values of all involved pixels in your problem. Several options exist to estimate sigma from data: (1) Estimate sigma independently for each pixel as a rpxy to pixel's albedo, sigma=0.5*(NIR+red); (2) estimate the sigma from the region/biome by the average distance between all pixels over a region of interest; or (3) when working with (nonstationary) time series one could estimate the lengthscale sigma from the temporal distances. We show specific examples for each approach in the <a href="https://code.earthengine.google.com/?accept_repo=users/ispguv/kNDVI">GEE demos here</a>
 
 ## Some other important notes
 <ol> 
