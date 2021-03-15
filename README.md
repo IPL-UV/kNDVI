@@ -15,9 +15,9 @@ Also, we give Google Earth Engine (GEE) examples in https://code.earthengine.goo
 
 ## On the (importance) of the sigma parameter
 
-Kernel methods require the definition of a kernel function and fixing the corresponding parameters. Many kernel functions are possible: the linear, polynomial or radial basis function (RBF) kernel being the most popular <a href="https://arxiv.org/pdf/math/0701907.pdf">[Hofmann et al 2007]</a>, <a href="https://arxiv.org/pdf/2007.14706.pdf">[Johnson et al 2020]</a>. The RBF kernel, <img src="https://render.githubusercontent.com/render/math?math=k(a,b) = exp(-(a-b)^2/(2\sigma^2))">, has a lengthscale parameter <img src="https://render.githubusercontent.com/render/math?math=\sigma"> which controls the notion of similarty between *a* and *b*. For the kNDVI, the involved kernel is <img src="https://render.githubusercontent.com/render/math?math=k(NIR,red) = exp(-(NIR-red)^2/(2\sigma^2))">, and thus the lengthscale parameter <img src="https://render.githubusercontent.com/render/math?math=\sigma"> controls the sensitivity to densely/sparsely vegetated pixel/region.
+Kernel methods require the definition of a kernel function and fixing the corresponding parameters. Many kernel functions are possible: the linear, polynomial or radial basis function (RBF) kernel being the most popular <a href="https://arxiv.org/pdf/math/0701907.pdf">[Hofmann et al 2007]</a>, <a href="https://arxiv.org/pdf/2007.14706.pdf">[Johnson et al 2020]</a>. The RBF kernel, k(a,b) = exp(-(a-b)^2/(2\sigma^2)), has a lengthscale parameter \sigma which controls the notion of similarty between *a* and *b*. For the kNDVI, the involved kernel is k(NIR,red) = exp(-(NIR-red)^2/(2\sigma^2)), and thus the lengthscale parameter \sigma controls the sensitivity to densely/sparsely vegetated pixel/region.
 
-* In this work, we explored all three kernel functions (see supp.material S1-S2 of the paper), but decided to stick to the RBF kernel because (i) it largely simplifies the index, kNDVI=tanh(((NIR-red)/(2*sigma))^2), (ii) it captures all higher order moments of similarity between NIR and red reflectances, and (iii) good results are obtained in all applications. 
+* In this work, we explored all three kernel functions (see supp.material S1-S2 of the paper), but decided to stick to the RBF kernel because (i) it largely simplifies the index, (ii) it captures all higher order moments of similarity between NIR and red reflectances, and (iii) good results are obtained in all applications. 
 
 * The sigma parameter is typically learned by cross-validation in supervised kernel machines, but this is not possible in unsupervised cases like in kNDVI. Therefore, we suggest to estimate a reasonable value of sigma from the data itself. A common prescription in the kernel methods literature is to fix the sigma value to the average distance between all involved objects in the dataset, i.e. NIR and red values of all involved pixels in your problem. Several options exist:
 <ol> 
@@ -25,12 +25,11 @@ Kernel methods require the definition of a kernel function and fixing the corres
 <li> Region/biome specific. Compute the average distance over a region of interest. 
 <li> Time series. Estimate the lengthscale of the temporal distances.
 </ol>
-
-We show specific examples in the GEE code (demo2) on how to do this. 
+We show specific examples for each approach in the <a href="https://code.earthengine.google.com/?accept_repo=users/ispguv/kNDVI">GEE demos here</a>
 
 ## Some more (important) notes
 <ol> 
-<li>Working with radiances or reflectances changes the value of sigma, so we strongly recommend to either (a) properly scale the data to reflectance values before fixing the sigma value (e.g. sigma=0.15), *or* (b) estimate the sigma value directly from data by the average distance criterion (see discussion above).
+<li>Working with radiances or reflectances changes the value of sigma, so we strongly recommend to either (a) properly scale the data to reflectance values before fixing the sigma value (e.g. sigma=0.25), *or* (b) estimate the sigma value directly from data by the average distance criterion (see discussion above).
 
 <li>In remote sensing of the vegetation, we are very often dealing with noise, clouds and water bodies that hamper the direct application of any vegetation index. Since kNDVI depends on sigma, one should carefully either remove those cases from the calculation of the mean heuristic, or alternatively replace the mean with the median, which worked fine in our case studies.
 
