@@ -16,7 +16,7 @@ var addKNDVI_RBF = function(image) {
   // Fix or estimate a reasonable sigma value, e.g. sigma = 0.15
   var sigma = ee.Number(0.15);
   // Compute kernel (k) and kNDVI
-  var k = D2.divide(sigma.pow(2)).multiply(-1).exp();
+  var k = D2.divide(sigma.pow(2).multiply(2)).multiply(-1).exp();
   var kndvi = ee.Image.constant(1).subtract(k)
       .divide(ee.Image.constant(1).add(k));
   return image.addBands(kndvi.select([0], ['kndvi']));
